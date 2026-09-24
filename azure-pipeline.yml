@@ -19,7 +19,7 @@ stages:
     steps:
     - task: NodeTool@0
       inputs:
-        versionSpec: 20.x
+        versionSpec: 24.x
       displayName: Install Node.js
     - task: CmdLine@2
       displayName: Install and Build
@@ -49,10 +49,10 @@ stages:
         downloadPath: $(System.DefaultWorkingDirectory)
     - task: AzureWebApp@1
       inputs:
-        azureSubscription: Azure subscription 1 (ca87634b-6f5b-404e-a749-f3bc1723f59d)
+        azureSubscription: Azure subscription 1 (25d41d47-b8f8-4905-9594-7ae705124b5a)
         appName: $(devappname)
         package: $(System.DefaultWorkingDirectory)/**/*.zip
-        runtimeStack: NODE|20-lts
+        runtimeStack: NODE|24-lts
         startUpCommand: npm start
       displayName: Deploy to Dev Environment
 - stage: DeployStaging
@@ -72,7 +72,7 @@ stages:
         downloadPath: $(System.DefaultWorkingDirectory)
     - task: AzureWebApp@1
       inputs:
-        azureSubscription: Azure subscription 1 (ca87634b-6f5b-404e-a749-f3bc1723f59d)
+        azureSubscription: Azure subscription 1 (25d41d47-b8f8-4905-9594-7ae705124b5a)
         appName: $(stagingappname)
         package: $(System.DefaultWorkingDirectory)/**/*.zip
         runtimeStack: NODE|20-lts
@@ -97,9 +97,9 @@ stages:
         downloadPath: $(System.DefaultWorkingDirectory)
     - task: AzureWebApp@1
       inputs:
-        azureSubscription: Azure subscription 1 (ca87634b-6f5b-404e-a749-f3bc1723f59d)
+        azureSubscription: Azure subscription 1 (25d41d47-b8f8-4905-9594-7ae705124b5a)
         appName: $(prodappname)
         package: $(System.DefaultWorkingDirectory)/**/*.zip
-        runtimeStack: NODE|20-lts
+        runtimeStack: NODE|24-lts
         startUpCommand: npm start
       displayName: Deploy to Production Environment
